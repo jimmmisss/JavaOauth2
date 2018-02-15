@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="db_simple@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.7">
+    <root id="1"/>
+    <database id="2" parent="1" name="db_simple">
+      <ObjectId>56855</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12407</ObjectId>
+    </database>
+    <database id="4" parent="1" name="jimmmisss">
+      <ObjectId>16384</ObjectId>
+    </database>
+    <role id="5" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="6" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="7" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2018-02-05.14:53:39.180</IntrospectionTimestamp>
+      <IntrospectionStateNumber>4601</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="8" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="9" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="pg_temp_1">
+      <ObjectId>11848</ObjectId>
+    </schema>
+    <schema id="11" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11849</ObjectId>
+    </schema>
+    <schema id="12" parent="2" name="information_schema">
+      <ObjectId>12119</ObjectId>
+    </schema>
+    <sequence id="13" parent="7" name="hibernate_sequence">
+      <ObjectId>56864</ObjectId>
+      <StateNumber>4247</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <table id="14" parent="7" name="atores">
+      <ObjectId>57058</ObjectId>
+      <StateNumber>4418</StateNumber>
+    </table>
+    <table id="15" parent="7" name="filmes">
+      <ObjectId>56856</ObjectId>
+      <StateNumber>4418</StateNumber>
+    </table>
+    <table id="16" parent="7" name="usuario">
+      <ObjectId>57116</ObjectId>
+      <StateNumber>4601</StateNumber>
+    </table>
+    <column id="17" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4414</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="18" parent="14" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>4372</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="19" parent="14" name="personagem">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>4372</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="20" parent="14" name="filme_id">
+      <Position>4</Position>
+      <DataType>bigint|0</DataType>
+      <StateNumber>4383</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="21" parent="14" name="atores_pkey">
+      <ObjectId>57064</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="22" parent="14" name="atores_pkey">
+      <ObjectId>57065</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>atores_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="23" parent="14" name="fk9o7opvhm9v3tsrdx26ljnjvlr">
+      <ObjectId>57111</ObjectId>
+      <ColNames>filme_id</ColNames>
+      <RefTableId>56856</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>filmes</RefTableName>
+      <RefKeyName>filmes_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="24" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4413</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="25" parent="15" name="ano">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>4246</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="26" parent="15" name="classificacao">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>4246</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="27" parent="15" name="nome">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>4433</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="28" parent="15" name="genero">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>4246</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="29" parent="15" name="data">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>4253</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="30" parent="15" name="filmes_pkey">
+      <ObjectId>56862</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="31" parent="15" name="filmes_pkey">
+      <ObjectId>56863</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>filmes_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="32" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4601</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="33" parent="16" name="admin">
+      <Position>2</Position>
+      <DataType>boolean|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4601</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="34" parent="16" name="nome">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4601</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="35" parent="16" name="senha">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4601</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="36" parent="16" name="usuario">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4601</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="37" parent="16" name="usuario_pkey">
+      <ObjectId>57122</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="38" parent="16" name="usuario_pkey">
+      <ObjectId>57123</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>usuario_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
