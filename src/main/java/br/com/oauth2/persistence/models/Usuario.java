@@ -1,12 +1,10 @@
 package br.com.oauth2.persistence.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(schema = "public", name = "usuarios")
@@ -27,9 +25,10 @@ public class Usuario implements Serializable {
 
     @NotEmpty
     private String nome;
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "logins",
+            joinColumns = @JoinColumn(name = "perfil_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"))
     private List<Perfil> perfis;
 
     public Usuario() {
@@ -40,6 +39,13 @@ public class Usuario implements Serializable {
         this.senha = usuario.getSenha();
         this.nome = usuario.getNome();
         this.perfis = usuario.getPerfis();
+    }
+
+    public Usuario(String usuario, String senha, String nome, List<Perfil> perfis) {
+        this.usuario = usuario;
+        this.senha = senha;
+        this.nome = nome;
+        this.perfis = perfis;
     }
 
     public Long getId() {
@@ -72,8 +78,11 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-    public List<Perfil> getPerfis() { return perfis; }
+    public List<Perfil> getPerfis() {
+        return perfis;
+    }
 
-    public void setPerfis(List<Perfil> perfis) { this.perfis = perfis; }
-
+    public void setPerfis(List<Perfil> perfis) {
+        this.perfis = perfis;
+    }
 }
