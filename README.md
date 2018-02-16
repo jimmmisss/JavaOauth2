@@ -1,1 +1,1 @@
-# JavaOauth2
+# SpringBootOauth2
