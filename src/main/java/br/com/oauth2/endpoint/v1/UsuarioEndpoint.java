@@ -51,4 +51,6 @@ public class UsuarioEndpoint {
             throw new ResourceNotFoundException("Usuário não encontrado: " + id);
     }
 
+    // hehehe
+
 }
