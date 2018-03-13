@@ -1,7 +1,8 @@
 package br.com.oauth2.security.service;
 
 import br.com.oauth2.persistence.models.Usuario;
-import br.com.oauth2.persistence.repository.UserRepository;
+import br.com.oauth2.persistence.repositories.UsuarioRepository;
+import br.com.oauth2.persistence.services.UsuarioService;
 import br.com.oauth2.security.config.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,17 +19,17 @@ import java.util.Optional;
 @Transactional
 public class UsuarioDetailService implements UserDetailsService {
 
-    private final UserRepository ur;
+    private final UsuarioService usuarioService;
 
     @Autowired
-    public UsuarioDetailService(UserRepository ur) {
-        this.ur = ur;
+    public UsuarioDetailService(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
     }
 
     @Override
     public UserDetails loadUserByUsername(String usuario) throws UsernameNotFoundException {
 
-        Usuario user = Optional.ofNullable(ur.findByUsuario(usuario))
+        Usuario user = Optional.ofNullable(usuarioService.BuscaUsuarioLogado(usuario))
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
 
         return new MyUserDetails(user);

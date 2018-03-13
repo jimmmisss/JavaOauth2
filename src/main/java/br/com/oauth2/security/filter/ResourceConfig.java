@@ -20,17 +20,20 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
 
         http
-                .logout()
-                .invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/*/public/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/*/protected/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.POST, "/*/admin/**").hasAnyRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/*/admin/**").hasAnyRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/*/admin/**").hasAnyRole("ADMIN")
-                .anyRequest().denyAll();
+            .cors()
+            .and()
+            .csrf().disable()
+            .logout()
+            .invalidateHttpSession(true)
+            .clearAuthentication(true)
+            .and().authorizeRequests()
+            .antMatchers(HttpMethod.GET, "/*/public/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/*/protected/**").hasAnyRole("ADMIN", "USER")
+            .antMatchers(HttpMethod.GET, "/*/admin/**").hasAnyRole("ADMIN")
+            .antMatchers(HttpMethod.POST, "/*/admin/**").hasAnyRole("ADMIN")
+            .antMatchers(HttpMethod.PUT, "/*/admin/**").hasAnyRole("ADMIN")
+            .antMatchers(HttpMethod.DELETE, "/*/admin/**").hasAnyRole("ADMIN")
+            .anyRequest().denyAll();
 
     }
 

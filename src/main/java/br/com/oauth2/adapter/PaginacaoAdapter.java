@@ -14,7 +14,7 @@ public class PaginacaoAdapter extends WebMvcConfigurerAdapter{
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         PageableHandlerMethodArgumentResolver phmar = new PageableHandlerMethodArgumentResolver();
-        phmar.setFallbackPageable(new PageRequest(0, 5));
+        phmar.setFallbackPageable(new PageRequest(0, 100));
         argumentResolvers.add(phmar);
     }
 

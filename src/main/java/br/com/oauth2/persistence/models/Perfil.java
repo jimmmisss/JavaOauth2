@@ -1,11 +1,14 @@
 package br.com.oauth2.persistence.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(schema = "public", name = "perfis")
@@ -21,8 +24,9 @@ public class Perfil implements Serializable, GrantedAuthority {
     @Column(unique = true)
     private String nome;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "perfis")
-    private List<Usuario> usuarios;
+    private List<Usuario> usuarios = new ArrayList<>();
 
     public Perfil() {
     }
@@ -52,4 +56,17 @@ public class Perfil implements Serializable, GrantedAuthority {
         return nome;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Perfil perfil = (Perfil) o;
+        return Objects.equals(id, perfil.id);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
+    }
 }

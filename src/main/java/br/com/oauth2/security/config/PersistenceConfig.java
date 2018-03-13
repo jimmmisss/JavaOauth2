@@ -22,7 +22,7 @@ public class PersistenceConfig {
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/db_simple");
         dataSource.setUsername("postgres");
-        dataSource.setPassword("postgres");
+        dataSource.setPassword("*gr@m@v3rd3");
         return dataSource;
     }
 

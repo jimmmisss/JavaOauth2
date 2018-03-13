@@ -1,10 +1,13 @@
 package br.com.oauth2.persistence.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(schema = "public", name = "usuarios")
@@ -25,11 +28,13 @@ public class Usuario implements Serializable {
 
     @NotEmpty
     private String nome;
+
+    @JsonManagedReference
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "logins",
-            joinColumns = @JoinColumn(name = "perfil_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"))
-    private List<Perfil> perfis;
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "perfil_id"))
+    private List<Perfil> perfis = new ArrayList<>();
 
     public Usuario() {
     }
@@ -84,5 +89,19 @@ public class Usuario implements Serializable {
 
     public void setPerfis(List<Perfil> perfis) {
         this.perfis = perfis;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(id, usuario.id);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
     }
 }
