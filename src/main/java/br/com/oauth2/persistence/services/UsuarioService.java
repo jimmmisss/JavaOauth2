@@ -2,6 +2,7 @@ package br.com.oauth2.persistence.services;
 
 import br.com.oauth2.persistence.models.Usuario;
 import br.com.oauth2.persistence.repositories.UsuarioRepository;
+import br.com.oauth2.persistence.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ public class UsuarioService {
 
     public Usuario BuscaUmUsuario(long id) {
         Usuario user = repo.findOne(id);
+        if(user == null)
+            throw new ObjectNotFoundException("Usuário não encontrado: " + id + ", tipo: " + Usuario.class.getName());
         return user;
     }
 
