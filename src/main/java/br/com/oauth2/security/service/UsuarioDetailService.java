@@ -1,7 +1,6 @@
 package br.com.oauth2.security.service;
 
 import br.com.oauth2.persistence.models.Usuario;
-import br.com.oauth2.persistence.repositories.UsuarioRepository;
 import br.com.oauth2.persistence.services.UsuarioService;
 import br.com.oauth2.security.config.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;

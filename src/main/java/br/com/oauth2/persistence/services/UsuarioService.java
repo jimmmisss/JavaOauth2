@@ -28,6 +28,8 @@ public class UsuarioService {
 
     public List<Usuario> BuscaTodosUsuarios() {
         List<Usuario> user = repo.findAll();
+        if(user == null)
+            throw new ObjectNotFoundException("Usuários não encontrados: " + Usuario.class.getName());
         return user;
     }
 
