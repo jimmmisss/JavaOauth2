@@ -23,4 +23,6 @@ public class PedidoEndpoint {
         return new ResponseEntity<>(pedidoService.listaUmPedido(id), HttpStatus.OK);
     }
 
+    //Wesley.
+
 }
