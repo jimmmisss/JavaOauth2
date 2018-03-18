@@ -1,7 +1,5 @@
 package br.com.oauth2.persistence.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,7 +16,6 @@ public class Categoria implements Serializable {
     private Integer id;
     private String nome;
 
-    @JsonBackReference
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos = new ArrayList<>();
 

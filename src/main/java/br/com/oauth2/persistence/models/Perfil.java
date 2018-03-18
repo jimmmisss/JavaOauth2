@@ -1,6 +1,7 @@
 package br.com.oauth2.persistence.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -24,7 +25,7 @@ public class Perfil implements Serializable, GrantedAuthority {
     @Column(unique = true)
     private String nome;
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToMany(mappedBy = "perfis")
     private List<Usuario> usuarios = new ArrayList<>();
 

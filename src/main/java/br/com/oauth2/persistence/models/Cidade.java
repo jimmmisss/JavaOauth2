@@ -18,7 +18,6 @@ public class Cidade implements Serializable {
     private String nome;
     private String uf;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "idestado")
     private Estado estado;

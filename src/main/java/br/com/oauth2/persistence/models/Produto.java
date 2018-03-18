@@ -1,8 +1,6 @@
 package br.com.oauth2.persistence.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,7 +17,7 @@ public class Produto implements Serializable {
     private String nome;
     private Double preco;
 
-    @JsonManagedReference
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "categoria_produto",
         joinColumns = @JoinColumn(name = "produto_id"),

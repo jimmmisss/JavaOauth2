@@ -29,7 +29,6 @@ public class Usuario implements Serializable {
     @NotEmpty
     private String nome;
 
-    @JsonManagedReference
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "logins",
             joinColumns = @JoinColumn(name = "usuario_id"),
