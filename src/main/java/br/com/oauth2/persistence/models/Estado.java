@@ -1,6 +1,7 @@
 package br.com.oauth2.persistence.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,7 +22,7 @@ public class Estado implements Serializable {
     private String uf;
     private String regiao;
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "estado")
     private List<Cidade> cidades = new ArrayList<>();
 
